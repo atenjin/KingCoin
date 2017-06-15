@@ -317,7 +317,7 @@ class PyScript(bytearray):
 
     def append_num(self, num):
         if num == -1 or (1 <= num <= 16):
-            self.extend(serialize.ser_char(num + (OpCodeType.OP_1 - 1)))
+            super(PyScript, self).append(serialize.ser_char(num + (OpCodeType.OP_1 - 1)))
         else:
             self.extend(bignum.PyBigNum(num).getvch())
         return self
